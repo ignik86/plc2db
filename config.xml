@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+<plc ip="172.24.14.75" />
+<tags>
+    <tag id="stamp" type="short" dbnr="5" startadress="0" size="2"/>
+
+</tags>
+</config>
