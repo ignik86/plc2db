@@ -2,7 +2,7 @@
 <config>
 <plc ip="172.24.14.75" />
 <tags>
-    <tag id="stamp" type="short" dbnr="5" startadress="0" size="2"/>
-
+    <tag id="1" name="stamp" type="short" dbnr="5" startadress="0" size="2"/>
+    <tag id="2" name="tcounter" type="integer" dbnr="5" startadress="44" size="4"/>
 </tags>
 </config>

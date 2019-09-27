@@ -49,9 +49,6 @@ class PLCClass:
 
         plc = snap7.client.Client()
         plc.connect(self.config.ip(), 0, 2)
-       #plc.db_write(int(self.config.tagval(tagnr, 'dbnr')),
-                    # int(self.config.tagval(tagnr, 'startadress')),
-                    # val)
         fmt = 'x'
         if self.config.tagval(tagnr, 'type') == 'integer':
             fmt = '>I'
