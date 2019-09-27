@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <config>
-<plc ip="172.24.14.75" />
-<tags>
-    <tag  name="stamp" type="short" dbnr="5" startadress="0" size="2"/>
-    <tag  name="tcounter" type="integer" dbnr="5" startadress="44" size="4"/>
-    <tag  name="counter_pressa" type="integer" dbnr="5" startadress="52" size="4"/>
-    <tag  name="counter3" type="integer" dbnr="5" startadress="56" size="4"/>
-</tags>
+    <plc ip="172.24.14.75" />
+    <server ip="172.24.15.181:3306" login="root" password="MT0334!"/>
+    <db name="plc_tag"/>
+    <tags frequency="5">
+        <tag  name="stamp" type="short" dbnr="5" startadress="0" size="2"/>
+        <tag  name="tcounter" type="integer" dbnr="5" startadress="44" size="4"/>
+        <tag  name="counter_pressa" type="integer" dbnr="5" startadress="52" size="4"/>
+        <tag  name="counter3" type="integer" dbnr="5" startadress="56" size="4"/>
+    </tags>
 </config>
