@@ -17,19 +17,42 @@ class Values(object):
         return "Value('%s')" % (self.value)
 
 
-if __name__ == '__main__':
+class Tags(object):
+    def __init__(self, name):
+        self.name = name
+
+    def __repr__(self):
+        return "Tag('%s')" % (self.name)
+
+
+def main():
+
     plc = PlcSnap.PLCClass(config_file)
     tree = ET.parse(config_file)
     root = tree.getroot()
-    engine = create_engine('mysql+mysqlconnector://root:MT0334!@172.24.15.181:3306/plc_tag', echo=True)
+    engine = create_engine('mysql+mysqlconnector://root:MT0334!@172.24.15.181:3306/plc_tag', echo=False)
 
     meta = MetaData(bind=engine, reflect=True)
     orm.Mapper(Values, meta.tables['values'])
+    orm.Mapper(Tags, meta.tables['tags'])
     session = orm.Session(bind=engine)
 
     for tag in root.iter('tag'):
-        print(tag.attrib['name'] + ':' + str(plc.readtag(tag.attrib['id'])))
-        value_table = Values(tag.attrib['id'], plc.readtag(tag.attrib['id']))
+
+        q = session.query(Tags).filter(Tags.name == tag.attrib['name'])
+        record = q.all()
+        if len(record) == 0:
+            tags_table = Tags(tag.attrib['name'])
+            session.add(tags_table)
+            session.commit()
+        q = session.query(Tags).filter(Tags.name == tag.attrib['name'])
+        record = q.all()
+        value_table = Values(record[0].id, plc.readtag(tag.attrib['name']))
+
         session.add(value_table)
         session.commit()
         session.close()
+
+
+if __name__ == '__main__':
+    main()

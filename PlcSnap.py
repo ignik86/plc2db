@@ -77,7 +77,7 @@ class XmlParse:
     def tagval(self, id, str):
         ret = ''
         for tag in self.root.iter('tag'):
-            if tag.attrib['id'] == id:
+            if tag.attrib['name'] == id:
                     ret = tag.attrib[str]
         return ret
 
