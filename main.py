@@ -8,7 +8,7 @@ import os, sys
 
 
 
-config_file = 'config.xml'
+config_file = '/home/pi/PLC2DB/config.xml'
 
 
 class Values(object):
