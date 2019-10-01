@@ -4,6 +4,9 @@ from sqlalchemy import create_engine
 from sqlalchemy import MetaData
 from sqlalchemy import orm
 import time
+import os, sys
+
+
 
 config_file = 'config.xml'
 
@@ -62,5 +65,24 @@ def main():
             time.sleep(int(timeout))
 
 
+def clear():
+    if os.name == 'posix':
+        os.system('clear')
+
+    elif os.name in ('ce', 'nt', 'dos'):
+        os.system('cls')
+
+
 if __name__ == '__main__':
-    main()
+    while True:
+        try:
+            main()
+        except Exception:
+
+            wait = 10
+            for i in range(wait):
+                print('error. Restart script in %s' % str(wait-i))
+                time.sleep(1)
+                clear()
+            os.execl(sys.executable, sys.executable, *sys.argv)
+
