@@ -8,7 +8,7 @@ import os, sys
 
 
 
-config_file = '/home/pi/PLC2DB/config.xml'
+config_file = 'config.xml'
 
 
 class Values(object):
@@ -62,7 +62,7 @@ def main():
             session.add(value_table)
             session.commit()
             session.close()
-            time.sleep(int(timeout))
+        time.sleep(int(timeout))
 
 
 def clear():
@@ -74,6 +74,7 @@ def clear():
 
 
 if __name__ == '__main__':
+    main()
     while True:
         try:
             main()
