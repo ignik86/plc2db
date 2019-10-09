@@ -4,6 +4,6 @@
     <server ip="172.24.15.181:3306" login="root" password="MT0334!"/>
     <db name="plc_tag"/>
     <tags frequency="5">
-        <tag  name="121:outconv_current" type="short" dbnr="1100" startadress="2" size="2"/>
+        <tag  name="121:outconv_current" type="float" dbnr="1100" startadress="2" size="4"/>
     </tags>
 </config>
